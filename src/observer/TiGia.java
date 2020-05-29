@@ -12,36 +12,27 @@ import java.util.List;
  *
  * @author Trung_PC
  */
-public class TiGia //Subject
-{
-    float tigia;
-    List<LangNgheThayDoiTiGia> khs = new ArrayList<>();
-
-    public TiGia(float tigia) {
-        this.tigia = tigia;
+public class TiGia {
+    float tiGia;
+    List<LangNgheThayDoiTiGia> khachHangs = new ArrayList<>();
+    public TiGia(float tiGia) {
+        this.tiGia = tiGia;
     }
-    
-    
-    public void them(LangNgheThayDoiTiGia kh)
-    {
-        if(khs.contains(kh))
-            khs.add(kh);
+    public void them(LangNgheThayDoiTiGia kh) {
+        if(!khachHangs.contains(kh)) {
+            khachHangs.add(kh);
+        }
     }
-    public void xoa(LangNgheThayDoiTiGia kh)
-    {
-        khs.remove(kh);
+    public void xoa(LangNgheThayDoiTiGia kh) {
+        khachHangs.remove(kh);
     }
-    public void thayDoiTiGia(float khoangTD)
-    {
-        tigia += khoangTD;
-        khs.forEach(kh ->
-        {
-            kh.capNhatTiGia(tigia);
+    public void thayDoiTiGia(float khoangThayDoi) {
+        tiGia = tiGia + khoangThayDoi;
+        khachHangs.forEach(kh ->{
+            kh.capNhatTiGia(tiGia);
         });
     }
-    
-    public static interface LangNgheThayDoiTiGia
-    {
-        public void capNhatTiGia(float tigiaMoi);
+    public static interface LangNgheThayDoiTiGia {
+        public void capNhatTiGia(float tiGiaMoi);
     }
 }
